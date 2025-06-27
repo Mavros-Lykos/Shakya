@@ -31,10 +31,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: setup Niode
-        uses: action setup-node@v3
+      - name: Setup Niode
+        uses: action/setup-node@v3
         with:
-          node-version: 22,
+          node-version: 22
           cashe: 'npm'
       - name: Install Dependencies
         run: npm install
