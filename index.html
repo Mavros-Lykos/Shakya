@@ -527,24 +527,27 @@
       updateCountdown();
     });
 
-    // Countdown timer (you can set the actual birthday date)
-    function updateCountdown() {
-      const birthday = new Date('2025-12-31'); // Replace with actual birthday
-      const now = new Date();
-      const diff = birthday - now;
+function updateCountdown() {
+  const birthdayDate = '2025-06-28T00:00:00+05:30'; // Birthday in Sri Lanka local time
+  const birthday = new Date(birthdayDate);
 
-      if (diff > 0) {
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const now = new Date();
+  const diffMs = birthday - now;
 
-        document.getElementById('countdown').innerHTML =
-          `Next birthday in: ${days} days, ${hours} hours, ${minutes} minutes! ⏰`;
-      } else {
-        document.getElementById('countdown').innerHTML =
-          "🎉 It's Shakya's Birthday TODAY! 🎉";
-      }
-    }
+  const countdownEl = document.getElementById('countdown');
+  if (diffMs > 0) {
+    const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+
+    countdownEl.innerHTML = `Next birthday in: ${days} days, ${hours} hours, ${minutes} minutes! ⏰`;
+  } else {
+    countdownEl.innerHTML = "🎉 It's Shakya's Birthday TODAY! 🎉";
+  }
+}
+setInterval(updateCountdown, 60 * 1000); // update every minute
+updateCountdown();
+
 
     // Music functions
     let currentAudio = null;
