@@ -32,10 +32,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Niode
-        uses: action/setup-node@v3
+        uses: actions/setup-node@v3
         with:
           node-version: 22
-          cashe: 'npm'
+          cache: 'npm'
       - name: Install Dependencies
         run: npm install
       - name: Build
