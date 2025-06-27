@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Shakya! 🎉</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+    .birthday-font {
+      font-family: 'Fredoka One', cursive;
+    }
+
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .bounce-in {
+      animation: bounceIn 1s ease-out;
+    }
+
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.3);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+
+      70% {
+        transform: scale(0.9);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .slide-in-left {
+      animation: slideInLeft 1s ease-out;
+    }
+
+    @keyframes slideInLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .slide-in-right {
+      animation: slideInRight 1s ease-out;
+    }
+
+    @keyframes slideInRight {
+      0% {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .gradient-bg {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .birthday-gradient {
+      background: linear-gradient(135deg, #e80000, #dffe57, #0116ff, #ff75ed);
+      background-size: 400% 400%;
+      animation: gradientShift 4s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .music-notes {
+      animation: musicFloat 2s ease-in-out infinite;
+    }
+
+    @keyframes musicFloat {
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-15px) rotate(5deg);
+      }
+    }
+
+    .photo-hover {
+      transition: all 0.3s ease;
+    }
+
+    .photo-hover:hover {
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .timeline-item {
+      opacity: 0;
+      transform: translateX(-50px);
+      animation: timelineSlide 0.8s ease-out forwards;
+    }
+
+    @keyframes timelineSlide {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .balloon {
+      animation: balloonFloat 4s ease-in-out infinite;
+    }
+
+    @keyframes balloonFloat {
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(-2deg);
+      }
+
+      50% {
+        transform: translateY(-30px) rotate(2deg);
+      }
+    }
+
+    .cake-spin {
+      animation: cakeSpin 8s linear infinite;
+    }
+
+    @keyframes cakeSpin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body class="font-['Inter'] bg-gradient-to-br from-blue-300 via-red-200 to-fuchsia-500
+ min-h-screen">
+  <!-- Background Elements -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="balloon absolute top-10 left-10 text-6xl">🎈</div>
+    <div class="balloon absolute top-20 right-20 text-5xl" style="animation-delay: -1s;">🎈</div>
+    <div class="balloon absolute bottom-20 left-20 text-4xl" style="animation-delay: -2s;">🎈</div>
+    <div class="floating absolute top-1/4 left-1/4 text-3xl">⭐</div>
+    <div class="floating absolute top-1/3 right-1/3 text-4xl" style="animation-delay: -1.5s;">✨</div>
+    <div class="floating absolute bottom-1/4 right-1/4 text-3xl" style="animation-delay: -2.5s;">🌟</div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full bg-white/20 backdrop-blur-md z-50 border-b border-white/20">
+    <div class="container mx-auto px-6 py-4">
+      <div class="flex justify-between items-center">
+        <div class="birthday-font text-2xl text-blue-900">Shakya's Birthday 🎂</div>
+        <div class="hidden md:flex space-x-6">
+          <a href="#hero" class="text-blue-900 hover:text-green-600 transition-colors">HOME</a>
+          <a href="#message" class="text-blue-900 hover:text-green-600 transition-colors">MESSAGE</a>
+          <a href="#gallery" class="text-blue-900 hover:text-green-600 transition-colors">GALLERY</a>
+          <a href="#timeline" class="text-blue-900 hover:text-green-600 transition-colors">TIMELINE</a>
+          <a href="#music" class="text-blue-900 hover:text-green-600 transition-colors">MUSIC</a>
+        </div>
+        <button onclick="launchConfetti()"
+          class="bg-yellow-400 hover:bg-yellow-500 text-purple-800 px-4 py-2 rounded-full font-semibold transition-all hover:scale-105">
+          🎉 Celebrate!
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="min-h-screen flex items-center justify-center text-center px-6 pt-20">
+    <div class="bounce-in">
+      <div class="birthday-gradient bg-clip-text text-transparent birthday-font text-6xl md:text-8xl mb-6">
+        Happy Birthday, Shakya !
+      </div>
+      <div class="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-2xl max-w-4xl mx-auto">
+        <!-- Shakya's Photo Placeholder -->
+        <div class="w-48 h-48 mx-auto mb-6 rounded-full">
+          <img src="/shakya.png" alt="John's childhood" class="w-full h-48 object-cover rounded-lg mb-4">
+        </div>
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">Wishing you all the joy and love in the world today and
+          always! ✨</h2>
+        <div class="flex justify-center items-center space-x-4 text-2xl mb-6">
+          <span class="bg-yellow-200 text-purple-800 px-6 py-3 rounded-full font-bold birthday-font">
+            Shakya turns 21 today! 🎂
+          </span>
+        </div>
+        <!-- Countdown Timer -->
+        <div id="countdown" class="text-lg text-gray-600 mb-6"></div>
+        <button onclick="playBirthdaySong()"
+          class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:scale-105 transition-transform shadow-lg">
+          🎵 Play Birthday Song
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personal Message Section -->
+  <section id="message" class="py-20 px-6">
+    <div class="container mx-auto max-w-4xl">
+      <div class="slide-in-left bg-white/90 backdrop-blur-sm rounded-3xl p-12 shadow-2xl">
+        <h2 class="birthday-font text-4xl text-center mb-8 text-purple-800">A Special Message for You 💝</h2>
+        <div class="text-lg text-gray-700 leading-relaxed space-y-4">
+          <p class="text-center text-xl font-semibold text-purple-600">
+            "Shakya, you're more than a friend – you're family!"
+          </p>
+          <p>
+            I hope this year brings you tons of laughter, adventure, and cake! Your kindness, humor, and incredible
+            spirit light up every room you enter. Watching you grow and achieve your dreams has been such a joy.
+          </p>
+          <p>
+            May this new year of your life be filled with amazing opportunities, unforgettable memories, and all the
+            happiness you deserve. You have such a wonderful way of making everyone around you feel special, and today
+            it's our turn to make YOU feel celebrated!
+          </p>
+          <p class="text-center font-semibold text-purple-600">
+            Here's to another year of being absolutely awesome! 🥳
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Gallery -->
+  <section id="gallery" class="py-20 px-6">
+    <div class="container mx-auto max-w-6xl">
+      <h2 class="birthday-font text-5xl text-center mb-12 text-white">Memory Lane 📸</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Photo placeholders with different themes -->
+        <div class="photo-hover bg-gradient-to-br from-yellow-300 to-orange-400 rounded-2xl p-8 shadow-xl">
+          <div class="text-6xl text-center mb-4">
+            <img src="/childhood-photo.jpg" alt="John's childhood" class="w-full h-48 object-cover rounded-lg mb-4">
+          </div>
+          <h3 class="text-xl font-bold text-center text-white">Childhood Days</h3>
+          <p class="text-center text-white/80">The cutest little troublemaker!</p>
+        </div>
+        <div class="photo-hover bg-gradient-to-br from-blue-400 to-cyan-500 rounded-2xl p-8 shadow-xl">
+          <div class="text-6xl text-center mb-4"><img src="/college.jpg" alt="College Adventures"
+              class="w-full h-48 object-cover rounded-lg mb-4"></div>
+          <h3 class="text-xl font-bold text-center text-white">College Adventures</h3>
+          <p class="text-center text-white/80">Making memories and friends</p>
+        </div>
+        <div class="photo-hover bg-gradient-to-br from-green-400 to-teal-500 rounded-2xl p-8 shadow-xl">
+          <div class="text-6xl text-center mb-4"><img src="/travel.jpg" alt="College Adventures"
+              class="w-full h-48 object-cover rounded-lg mb-4"></div>
+        </div>
+        <h3 class="text-xl font-bold text-center text-white">Travel Memories</h3>
+        <p class="text-center text-white/80">Exploring the world together</p>
+      </div>
+      <!-- <div class="photo-hover bg-gradient-to-br from-purple-400 to-pink-500 rounded-2xl p-8 shadow-xl">
+        <div class="text-6xl text-center mb-4">🎉</div>
+        <h3 class="text-xl font-bold text-center text-white">Party Times</h3>
+        <p class="text-center text-white/80">Always the life of the party</p>
+      </div>
+      <div class="photo-hover bg-gradient-to-br from-red-400 to-pink-500 rounded-2xl p-8 shadow-xl">
+        <div class="text-6xl text-center mb-4"><img src="/group.jpg" alt="College Adventures"
+              class="w-full h-48 object-cover rounded-lg mb-4"></div></div>
+        <h3 class="text-xl font-bold text-center text-white">Group Selfies</h3>
+        <p class="text-center text-white/80">Squad goals achieved</p>
+      </div>
+      <div class="photo-hover bg-gradient-to-br from-indigo-400 to-purple-600 rounded-2xl p-8 shadow-xl">
+        <div class="text-6xl text-center mb-4">🏆</div>
+        <h3 class="text-xl font-bold text-center text-white">Achievements</h3>
+        <p class="text-center text-white/80">Celebrating your wins</p>
+      </div> -->
+    </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section id="timeline" class="py-20 px-6">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="birthday-font text-5xl text-center mb-12 text-white">Shakya's Milestones 🌟</h2>
+      <div class="relative">
+        <!-- Timeline line -->
+        <div
+          class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-yellow-400 to-pink-500">
+        </div>
+
+        <!-- Timeline items -->
+        <div class="timeline-item relative mb-12" style="animation-delay: 0.2s;">
+          <div class="flex items-center">
+            <div class="w-1/2 pr-8 text-right">
+              <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl">
+                <h3 class="text-xl font-bold text-purple-800">Started University 🎓</h3>
+                <p class="text-gray-600">The beginning of an amazing journey</p>
+              </div>
+            </div>
+            <div
+              class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-yellow-400 rounded-full border-4 border-white shadow-lg">
+            </div>
+            <div class="w-1/2 pl-8">
+              <div class="text-2xl font-bold text-white">2024 April</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item relative mb-12" style="animation-delay: 0.4s;">
+          <div class="flex items-center">
+            <div class="w-1/2 pr-8 text-right">
+              <div class="text-2xl font-bold text-white">2024 July</div>
+            </div>
+            <div
+              class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-pink-400 rounded-full border-4 border-white shadow-lg">
+            </div>
+            <div class="w-1/2 pl-8">
+              <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl">
+                <h3 class="text-xl font-bold text-purple-800">Joined Valkyries ⚔️</h3>
+                <p class="text-gray-600">An adventure of a lifetime</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item relative mb-12" style="animation-delay: 0.6s;">
+          <div class="flex items-center">
+            <div class="w-1/2 pr-8 text-right">
+              <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl">
+                <h3 class="text-xl font-bold text-purple-800">Joined TitaniaSoft 🚀</h3>
+                <p class="text-gray-600">Your hard work paying off</p>
+              </div>
+            </div>
+            <div
+              class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-green-400 rounded-full border-4 border-white shadow-lg">
+            </div>
+            <div class="w-1/2 pl-8">
+              <div class="text-2xl font-bold text-white">2025</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item relative" style="animation-delay: 0.8s;">
+          <div class="flex items-center">
+            <div class="w-1/2 pr-8 text-right">
+              <div class="text-2xl font-bold text-white">2025</div>
+            </div>
+            <div
+              class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-gradient-to-br from-yellow-400 to-pink-500 rounded-full border-4 border-white shadow-lg cake-spin text-white flex items-center justify-center text-sm">
+              🎂</div>
+            <div class="w-1/2 pl-8">
+              <div class="bg-gradient-to-br from-yellow-400 to-pink-500 text-white rounded-2xl p-6 shadow-xl">
+                <h3 class="text-xl font-bold">Another Amazing Year! 🎉</h3>
+                <p>Ready for new adventures and memories</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Music Section -->
+  <section id="music" class="py-20 px-6">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="birthday-font text-5xl text-center mb-12 text-white">Birthday Vibes 🎵</h2>
+      <div class="slide-in-right bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-2xl">
+        <div class="text-center mb-8">
+          <div class="music-notes text-6xl mb-4">🎵 🎶 🎵</div>
+          <h3 class="text-2xl font-bold text-purple-800 mb-4">Songs That Remind Us of Shakya</h3>
+          <p class="text-gray-600">Click to play your special birthday playlist!</p>
+        </div>
+
+        <!-- Music Controls -->
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+          <button onclick="playBirthdaySong()"
+            class="bg-gradient-to-r from-pink-500 to-red-500 text-white px-6 py-3 rounded-full font-semibold hover:scale-105 transition-transform">
+            🎂 Birthday Song
+          </button>
+<!--           <button onclick="playPlaylist()"
+            class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-full font-semibold hover:scale-105 transition-transform">
+            🎵 Special Surprise
+          </button> -->
+          <button onclick="stopMusic()"
+            class="bg-gradient-to-r from-gray-500 to-gray-600 text-white px-6 py-3 rounded-full font-semibold hover:scale-105 transition-transform">
+            ⏹️ Stop
+          </button>
+        </div>
+
+        <!-- Playlist Preview -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
+          <div class="bg-purple-100 rounded-lg p-4">
+            <h4 class="font-semibold text-purple-800">🎵 Happy Songs</h4>
+            <p>All your favorite upbeat tracks</p>
+          </div>
+          <div class="bg-blue-100 rounded-lg p-4">
+            <h4 class="font-semibold text-blue-800">🎶 Memory Lane</h4>
+            <p>Songs from our adventures together</p>
+          </div>
+        </div>
+                  <div class="p-8">
+            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/91037774&color=%23ff0000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/bangtan" title="BTS" target="_blank" style="color: #cccccc; text-decoration: none;">BTS</a> · <a href="https://soundcloud.com/bangtan/sets/rm-rap-monster" title="RM - Rap Monster" target="_blank" style="color: #cccccc; text-decoration: none;">RM - Rap Monster</a></div>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 bg-black/20 backdrop-blur-sm">
+    <div class="container mx-auto max-w-4xl text-center">
+      <div class="mb-8">
+        <h3 class="birthday-font text-3xl text-white mb-4">Share More Birthday Love! 💕</h3>
+        <p class="text-white/80 mb-6">Want to add your own birthday wishes for Shakya?</p>
+        <div class="flex justify-center space-x-6">
+          <a href="mailto:shakya.com"
+            class="bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-full transition-all hover:scale-105">
+            📧 Email Wishes
+          </a>
+          <a href="#"
+            class="bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-full transition-all hover:scale-105">
+            📱 Instagram
+          </a>
+          <button onclick="shareWebsite()"
+            class="bg-gradient-to-r from-green-500 to-teal-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-transform">
+            🔗 Share This Page
+          </button>
+        </div>
+      </div>
+      <div class="border-t border-white/20 pt-8">
+        <p class="text-white/60">Made with ❤️ for Shakya's special day</p>
+        <div class="mt-4 text-4xl">🎂🎉🎈✨🌟</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Audio elements (hidden) -->
+  <audio id="birthdayAudio" loop>
+    <source src="birthday-song.mp3" type="audio/mp4">
+    Your browser does not support the audio element.
+  </audio>
+
+  <audio id="playlistAudio" loop>
+    <source src="playlist.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // Confetti functions
+    function launchConfetti() {
+    if (typeof confetti === 'undefined') {
+        console.error('Confetti library not loaded');
+        return;
+    }
+    
+    // Multiple confetti bursts
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
+    
+    setTimeout(() => {
+        confetti({
+            particleCount: 50,
+            spread: 60,
+            origin: { y: 0.7, x: 0.2 }
+        });
+    }, 300);
+    
+    setTimeout(() => {
+        confetti({
+            particleCount: 50,
+            spread: 60,
+            origin: { y: 0.7, x: 0.8 }
+        });
+    }, 600);
+}
+
+    // Auto-launch confetti on page load
+    window.addEventListener('load', () => {
+      setTimeout(launchConfetti, 1000);
+      updateCountdown();
+    });
+
+    // Countdown timer (you can set the actual birthday date)
+    function updateCountdown() {
+      const birthday = new Date('2025-12-31'); // Replace with actual birthday
+      const now = new Date();
+      const diff = birthday - now;
+
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+        document.getElementById('countdown').innerHTML =
+          `Next birthday in: ${days} days, ${hours} hours, ${minutes} minutes! ⏰`;
+      } else {
+        document.getElementById('countdown').innerHTML =
+          "🎉 It's Shakya's Birthday TODAY! 🎉";
+      }
+    }
+
+    // Music functions
+    let currentAudio = null;
+
+    function playBirthdaySong() {
+      stopMusic();
+      currentAudio = document.getElementById('birthdayAudio');
+      currentAudio.play().catch(e => {
+        alert('Birthday song not found! Please add your birthday-song.mp4 file to the project.');
+      });
+    }
+
+    function playPlaylist() {
+      stopMusic();
+      currentAudio = document.getElementById('playlistAudio');
+      currentAudio.play().catch(e => {
+        alert('Playlist not found! Please add your playlist.mp3 file to the project.');
+      });
+    }
+
+    function stopMusic() {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+    }
+
+    // Share function
+    function shareWebsite() {
+      if (navigator.share) {
+        navigator.share({
+          title: "Happy Birthday Shakya!",
+          text: "Check out this amazing birthday website for Shakya!",
+          url: window.location.href
+        });
+      } else {
+        // Fallback for browsers that don't support Web Share API
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          alert('Link copied to clipboard! Share it with friends!');
+        });
+      }
+    }
+
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Random confetti on scroll
+    let lastConfetti = 0;
+    window.addEventListener('scroll', () => {
+      const now = Date.now();
+      if (now - lastConfetti > 3000) { // Limit confetti frequency
+        if (Math.random() > 0.95) { // Random chance
+          confetti({
+            particleCount: 30,
+            spread: 50,
+            origin: { y: 0.8, x: Math.random() }
+          });
+          lastConfetti = now;
+        }
+      }
+    });
+
+    // Update countdown every minute
+    setInterval(updateCountdown, 60000);
+
+    // Animate timeline items on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateX(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.timeline-item').forEach(item => {
+      observer.observe(item);
+    });
+  </script>
+</body>
+
+</html>
